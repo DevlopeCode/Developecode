@@ -1,48 +1,12 @@
-import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import contactImg from "../assets/img/contact-img.svg";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import { profile } from "../data/profile";
 
 export const Contact = () => {
-  const formInitialDetails = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: ''
-  }
-  const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const [buttonText, setButtonText] = useState('Send');
-  const [status, setStatus] = useState({});
-
-  const onFormUpdate = (category, value) => {
-      setFormDetails({
-        ...formDetails,
-        [category]: value
-      })
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setButtonText("Sending...");
-    let response = await fetch("http://localhost:5000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formDetails),
-    });
-    setButtonText("Send");
-    let result = await response.json();
-    setFormDetails(formInitialDetails);
-    if (result.code == 200) {
-      setStatus({ succes: true, message: 'Message sent successfully'});
-    } else {
-      console.log("resultresult",JSON.stringify(result));
-      setStatus({ succes: false, message: 'Something went wrong, please try again later.'});
-    }
-  };
+  const primaryPhone = profile.phones?.[1] || profile.phones?.[0];
+  const telHref = primaryPhone ? `tel:${primaryPhone.replace(/\s+/g, "")}` : undefined;
 
   return (
     <section className="contact" id="connect">
@@ -59,33 +23,50 @@ export const Contact = () => {
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <h2>Get In Touch</h2>
-                <form onSubmit={handleSubmit}>
-                  <Row>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.lasttName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)}/>
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="email" value={formDetails.email} placeholder="Email Address" onChange={(e) => onFormUpdate('email', e.target.value)} />
-                    </Col>
-                    <Col size={12} sm={6} className="px-1">
-                      <input type="tel" value={formDetails.phone} placeholder="Phone No." onChange={(e) => onFormUpdate('phone', e.target.value)}/>
-                    </Col>
-                    <Col size={12} className="px-1">
-                      <textarea rows="6" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
-                      <button type="submit"><span>{buttonText}</span></button>
-                    </Col>
-                    {
-                      status.message &&
-                      <Col>
-                        <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
-                      </Col>
-                    }
-                  </Row>
-                </form>
+                <h2>Contact</h2>
+                <p className="contact-lead">
+                  Want to collaborate or discuss an opportunity? Reach me on any channel below.
+                </p>
+                <Row className="g-3">
+                  <Col sm={6}>
+                    <a className="contact-card" href={telHref}>
+                      <div className="contact-card-title">Phone</div>
+                      <div className="contact-card-value">{primaryPhone}</div>
+                      <div className="contact-card-note">Tap to call</div>
+                    </a>
+                  </Col>
+                  <Col sm={6}>
+                    <a className="contact-card" href={`mailto:${profile.email}`}>
+                      <div className="contact-card-title">Email</div>
+                      <div className="contact-card-value">{profile.email}</div>
+                      <div className="contact-card-note">Tap to email</div>
+                    </a>
+                  </Col>
+                  <Col sm={6}>
+                    <a
+                      className="contact-card"
+                      href={profile.socials.whatsapp}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <div className="contact-card-title">WhatsApp</div>
+                      <div className="contact-card-value">{profile.phones?.[1] || primaryPhone}</div>
+                      <div className="contact-card-note">Open chat</div>
+                    </a>
+                  </Col>
+                  <Col sm={6}>
+                    <a
+                      className="contact-card"
+                      href={profile.socials.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <div className="contact-card-title">LinkedIn</div>
+                      <div className="contact-card-value">Connect with me</div>
+                      <div className="contact-card-note">View profile</div>
+                    </a>
+                  </Col>
+                </Row>
               </div>}
             </TrackVisibility>
           </Col>

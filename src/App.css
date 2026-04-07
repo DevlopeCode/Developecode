@@ -282,6 +282,37 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner button:hover svg {
   margin-left: 25px;
 }
+.banner-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+.btn-primary-solid,
+.btn-primary-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+.btn-primary-solid {
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+.btn-primary-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.btn-primary-solid:hover,
+.btn-primary-ghost:hover {
+  transform: translateY(-1px);
+}
 .banner img {
   animation: updown 3s linear infinite;
 }
@@ -332,12 +363,102 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 50%;
   margin: 0 auto 15px auto;
 }
+.skill-level {
+  color: #B8B8B8;
+  font-size: 14px;
+  margin-top: 6px;
+}
 .background-image-left {
   top: 28%;
   position: absolute;
   bottom: 0;
   width: 40%;
   z-index: -4;
+}
+
+/************ About / Experience / Education / Extras ************/
+.about, .experience, .education, .extras {
+  padding: 80px 0;
+  position: relative;
+}
+.about h2, .experience h2, .education h2, .extras h2 {
+  font-size: 45px;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 16px;
+}
+.about-bx {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 24px;
+  padding: 22px;
+}
+.about-bx p {
+  color: #B8B8B8;
+  font-size: 17px;
+  letter-spacing: 0.4px;
+  line-height: 1.6em;
+  margin-bottom: 10px;
+}
+.about-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+@media (max-width: 768px) {
+  .about-meta { grid-template-columns: 1fr; }
+}
+.meta-item {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 12px 14px;
+}
+.meta-label { display:block; font-size: 12px; color: #B8B8B8; letter-spacing: .4px; }
+.meta-value, .meta-link { display:block; font-size: 15px; color: #fff; margin-top: 4px; }
+.meta-link:hover { text-decoration: underline; }
+
+.timeline { display: grid; gap: 16px; }
+.timeline-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 24px;
+  padding: 18px 18px 14px 18px;
+}
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.timeline-role { font-size: 20px; font-weight: 700; }
+.timeline-company { color: #B8B8B8; }
+.timeline-date { color: #B8B8B8; font-size: 14px; }
+.timeline-list { margin-left: 18px; color: #B8B8B8; }
+.timeline-list li { margin-bottom: 6px; }
+
+.card-surface {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 24px;
+  padding: 18px;
+  height: 100%;
+}
+.card-title { font-weight: 800; font-size: 18px; }
+.card-subtitle { color: #B8B8B8; margin-top: 6px; }
+.card-meta { color: #B8B8B8; margin-top: 10px; font-size: 14px; }
+.clean-list { margin: 0; padding-left: 18px; color: #B8B8B8; }
+.clean-list li { margin-bottom: 8px; }
+.pill-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.pill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: #fff;
+  font-size: 14px;
 }
 
 /************ Projects Css ************/
@@ -457,6 +578,55 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-size: 15px;
   letter-spacing: 0.8px;
 }
+.proj-tag {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.proj-stack {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 12px;
+}
+.chip {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 12px;
+  color: #fff;
+}
+.proj-bullets {
+  margin: 12px auto 0 auto;
+  padding-left: 18px;
+  text-align: left;
+  max-width: 360px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 13px;
+}
+.proj-links {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.proj-link {
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+}
+.proj-link:hover { background: rgba(0,0,0,0.55); }
 .background-image-right {
   top: 20%;
   position: absolute;
@@ -478,6 +648,39 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	font-size: 45px;
 	font-weight: 700;
   margin-bottom: 30px;
+}
+.contact-lead {
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.3px;
+  line-height: 1.6em;
+  margin-bottom: 18px;
+}
+.contact-card {
+  display: block;
+  padding: 16px 16px 14px 16px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.20);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+.contact-card:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 0, 0, 0.28);
+}
+.contact-card-title {
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: #fff;
+}
+.contact-card-value {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.92);
+  word-break: break-word;
+}
+.contact-card-note {
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
 }
 .contact form input, .contact form textarea {
   width: 100%;
